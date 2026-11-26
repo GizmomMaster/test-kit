@@ -1,0 +1,21 @@
+<section id="map">
+<div class="head">
+<p class="eyebrow">ПОДРОБНАЯ СХЕМА · АРТЕФАКТЫ</p>
+<h2>Что появляется по ходу задачи и кто это пишет</h2>
+</div>
+<table class="steps compact">
+<tr><th>АРТЕФАКТ</th><th>ГДЕ</th><th>ПИШЕТ</th><th>ЧИТАЕТ</th></tr>
+<tr><td>BRD эпика (FR, BR, AC-xxx)</td><td><code>docs/requirements/&lt;EPIC&gt;/requirements.md</code></td><td><span class="tag t-agent">analyst</span></td><td>qa, planner</td></tr>
+<tr><td>Черновики кейсов TC-xx, найденные C-id</td><td><code>docs/tests/&lt;EPIC&gt;/test-cases.md</code></td><td><span class="tag t-agent">qa · дизайн</span></td><td>planner, Гейт 2</td></tr>
+<tr><td>План среза + «Покрытие кейсов»</td><td><code>docs/plans/&lt;EPIC&gt;/&lt;slug&gt;.plan.md</code></td><td><span class="tag t-agent">planner</span></td><td>Гейт 2, teamlead, все стадии 2</td></tr>
+<tr><td>Кейсы в TestRail (C-id, References = KEY)</td><td>TestRail · <code>Change Request/&lt;KEY&gt;</code></td><td><span class="tag t-script">testrail-api</span> по команде qa</td><td>QA, разработчики</td></tr>
+<tr><td>План верификации AT-xx</td><td><code>docs/specs/&lt;KEY&gt;/spec.md</code></td><td><span class="tag t-agent">solution-architect</span></td><td>spec-auditor, coder, tester</td></tr>
+<tr><td>Метка теста</td><td><code>[Trait("TestRail", "C&lt;id&gt;")]</code></td><td><span class="tag t-agent">coder</span> <span class="tag t-agent">tester</span></td><td>reviewer, CI</td></tr>
+<tr><td>Матрица покрытия (YAML)</td><td><code>docs/tests/&lt;KEY&gt;/test-cases.md</code></td><td><span class="tag t-agent">tester</span></td><td>reviewer, CI-джоба, qa</td></tr>
+<tr><td>Понижения покрытия</td><td><code>docs/reports/&lt;KEY&gt;/changes.md</code></td><td><span class="tag t-agent">tech-writer</span></td><td>QA на приёмке</td></tr>
+<tr><td>Отчёт покрытия</td><td><code>coverage-report.html</code> · <code>.json</code> в pipeline</td><td><span class="tag t-script">CI-джоба</span></td><td>QA (HTML), qa (JSON)</td></tr>
+<tr><td>Отчёт приёмки, результаты, поля Dev</td><td><code>docs/reports/&lt;KEY&gt;/test-report.md</code> · TestRail</td><td><span class="tag t-agent">qa · приёмка</span></td><td>QA, следующие задачи</td></tr>
+</table>
+<div class="legend"><span class="tag t-agent">агент</span><span class="tag t-human">человек</span><span class="tag t-script">скрипт / CI</span><span class="tag t-gate">гейт</span><span>— обозначения на следующих слайдах</span></div>
+<aside>Прежде чем идти по шагам — карта артефактов. Слева что появляется, дальше — где это лежит, кто пишет и кто читает. Почти всё живёт в репозитории сервиса в папке docs, рядом с кодом, — и проходит обычное ревью в MR. В TestRail уходят только сами кейсы, результаты приёмки и два поля покрытия. Источник правды о покрытии — матрица в репозитории; TestRail её зеркалит. Цветом на следующих слайдах обозначено, кто делает шаг: агент, человек, скрипт или CI, и гейт — точка согласования людьми.</aside>
+</section>

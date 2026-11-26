@@ -1,0 +1,13 @@
+<section id="status">
+<div class="head">
+<p class="eyebrow">ГДЕ МЫ СЕЙЧАС</p>
+<h2>Процесс в агентах готов — осталось пилот и две внешние зависимости</h2>
+</div>
+<div class="row">
+<div class="card"><p class="num">22 / 26</p><h3>задачи изменения выполнены</h3><p class="card-text">Агенты analyst, qa, planner, tester, architect, spec-auditor, reviewer, teamlead; справочники, wiki-стандарты, скрипт создания секции TestRail</p></div>
+<div class="card"><x-icon name="Settings" style="width:56px;height:56px;color:#B4521C"></x-icon><h3>Администратор TestRail</h3><p class="card-text">Поля кейса «Dev coverage» и «Dev autotests». Поле State не трогаем — оно занято автоматизацией QA</p></div>
+<div class="card"><x-icon name="Code" style="width:56px;height:56px;color:#B4521C"></x-icon><h3>SRE</h3><p class="card-text">Python-джоба отчёта покрытия в CI сервиса. Без неё процесс работает: QA смотрит pipeline сам</p></div>
+</div>
+<p class="small">Ни одна внешняя зависимость не блокирует старт: без полей и без джобы всё работает по матрице в репозитории.</p>
+<aside>Статус. Изменение в агентах и стандартах реализовано: 22 из 26 задач. Осталось три вещи вне репозитория: администратор TestRail должен завести два поля для покрытия, SRE — встроить джобу отчёта, и нужен пилот на реальном эпике. Важно, что ничего из этого не блокирует старт: пока полей и отчёта нет, всё работает по матрице в репозитории, просто QA смотрит pipeline сам.</aside>
+</section>

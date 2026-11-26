@@ -1,0 +1,16 @@
+<section id="d1a">
+<div class="head">
+<p class="eyebrow">ПОДРОБНО · СТАДИЯ 1 · ДО ГЕЙТА 2</p>
+<h2>От требований к кейсам и намерению покрытия</h2>
+</div>
+<table class="steps">
+<tr><th></th><th>КТО</th><th>ЧТО ДЕЛАЕТ</th><th>АРТЕФАКТ</th></tr>
+<tr><td class="n">1</td><td class="w"><span class="tag t-human">человек</span><span class="name">аналитик</span></td><td>Запускает analyst по эпику, отвечает на уточняющие вопросы</td><td class="a">—</td></tr>
+<tr><td class="n">2</td><td class="w"><span class="tag t-agent">агент</span><span class="name">analyst</span></td><td>Пишет BRD: функциональные и бизнес-требования, критерии AC-xxx</td><td class="a"><code>requirements.md</code> эпика</td></tr>
+<tr class="gate-row"><td class="n">3</td><td class="w"><span class="tag t-gate">Гейт 1</span><span class="name">аналитик, заказчик</span></td><td>Одобряют BRD</td><td class="a">BRD одобрен</td></tr>
+<tr><td class="n">4</td><td class="w"><span class="tag t-agent">агент</span><span class="name">qa · дизайн</span></td><td>Вызывается analyst’ом. Ищет кейсы в TestRail (секции endpoint’ов, Change Request) через <span class="tag t-script">testrail-api</span>, только чтение. Найденным — REUSE/UPDATE или «не оценено»; новые — черновики TC-xx чёрным ящиком</td><td class="a"><code>docs/tests/&lt;EPIC&gt;/test-cases.md</code></td></tr>
+<tr><td class="n">5</td><td class="w"><span class="tag t-agent">агент</span><span class="name">planner</span></td><td>Режет эпик на срезы. В каждом плане — «Покрытие кейсов»: кейс → срез, уровень теста, ожидаемый статус, оценка автотестов (для старых кейсов — с поиском существующих тестов)</td><td class="a"><code>&lt;slug&gt;.plan.md</code>, раздел «Покрытие кейсов»</td></tr>
+<tr class="gate-row"><td class="n">6</td><td class="w"><span class="tag t-gate">Гейт 2</span><span class="name">разработчик, QA, аналитик</span></td><td>Согласуют планы и намерение покрытия: какие кейсы закроют автотесты и насколько</td><td class="a">Планы согласованы</td></tr>
+</table>
+<aside>Подробно по стадии 1. Аналитик запускает агента analyst, тот пишет BRD с критериями приёмки, и на первом гейте его одобряют. Дальше новое: analyst в той же сессии вызывает qa в режиме дизайна. qa сначала ищет в TestRail существующие кейсы — скриптами из скилла testrail-api, только на чтение, писать в TestRail в этом режиме запрещено. Что нашлось — переиспользуем или дополняем; если у старого кейса нет меток в коде, он помечается «покрытие не оценено». Новые кейсы — черновики с временными номерами TC. Затем planner раскладывает кейсы по срезам и для каждого пишет намерение: каким уровнем тестов и до какого статуса закрываем, плюс оценку трудозатрат. На втором гейте люди согласуют это вместе с планами.</aside>
+</section>

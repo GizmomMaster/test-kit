@@ -1,0 +1,16 @@
+<section id="d1b">
+<div class="head">
+<p class="eyebrow">ПОДРОБНО · СТАДИЯ 1 · ПОСЛЕ ГЕЙТА 2</p>
+<h2>Выгрузка кейсов в TestRail и замена TC-xx на C-id</h2>
+</div>
+<table class="steps">
+<tr><th></th><th>КТО</th><th>ЧТО ДЕЛАЕТ</th><th>АРТЕФАКТ</th></tr>
+<tr><td class="n">7</td><td class="w"><span class="tag t-human">человек</span><span class="name">любой из команды</span></td><td>Заводит подзадачи в Jira и отдельно вызывает qa в режиме выгрузки</td><td class="a">Ключи срезов KEY</td></tr>
+<tr><td class="n">8</td><td class="w"><span class="tag t-agent">агент</span><span class="name">qa · выгрузка</span></td><td>Перечитывает актуальные кейсы, собирает один набор: CREATE, UPDATE, REUSE, новые секции. Без ключа среза его кейсы не выгружает</td><td class="a">Список изменений на согласие</td></tr>
+<tr class="gate-row"><td class="n">9</td><td class="w"><span class="tag t-gate">HUMAN GATE</span><span class="name">QA / аналитик</span></td><td>Одно «да» на весь набор. Изменился набор — вопрос заново</td><td class="a">—</td></tr>
+<tr><td class="n">10</td><td class="w"><span class="tag t-script">скрипты</span><span class="name">testrail-api</span></td><td><code>add_section</code> → <code>Change Request/&lt;KEY&gt;</code>; <code>add_case</code>, <code>update_case</code>; KEY дописывается в References. Затем чтение каждого кейса для сверки</td><td class="a">Кейсы в TestRail с C-id</td></tr>
+<tr><td class="n">11</td><td class="w"><span class="tag t-agent">агент</span><span class="name">qa · выгрузка</span></td><td>Заменяет TC-xx на C-id во всех артефактах, отдаёт таблицу соответствий</td><td class="a"><code>test-cases.md</code>, <code>&lt;slug&gt;.plan.md</code></td></tr>
+<tr><td class="n">12</td><td class="w"><span class="tag t-human">человек</span><span class="name">автор задачи</span></td><td>Коммитит артефакты с C-id. Повторно согласовывать планы не нужно</td><td class="a">Коммит в репозиторий</td></tr>
+</table>
+<aside>Почему выгрузка отдельно: у кейса в TestRail поле References — это ключ задачи, а ключей срезов на втором гейте ещё нет, и агентам запрещено их придумывать. Поэтому сначала кто-то из команды заводит подзадачи в Jira, потом запускает qa в режиме выгрузки. Агент собирает весь набор изменений — какие кейсы создать, какие дополнить, к каким дописать ключ, какие секции создать — и задаёт один вопрос. Только после «да» скрипты пишут в TestRail: новые кейсы ложатся в Change Request с ключом среза, к существующим ключ дописывается, а не заменяет старые. После записи агент перечитывает каждый кейс, сверяет и меняет временные TC на настоящие C-id в файлах. Человек коммитит.</aside>
+</section>

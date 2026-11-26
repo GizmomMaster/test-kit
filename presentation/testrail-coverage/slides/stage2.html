@@ -1,0 +1,19 @@
+<section id="stage2" class="alt">
+<div class="head">
+<p class="eyebrow">СТАДИЯ 2 · РАЗРАБОТКА</p>
+<h2>Тест знает, какой кейс он закрывает</h2>
+</div>
+<div class="row">
+<div class="grow tight" style="display:flex;flex-direction:column">
+<div class="card"><h3>1. Найти существующие тесты</h3><p class="card-text">Старый кейс — метка на старый тест; новые тесты только на непокрытые шаги</p></div>
+<div class="card"><h3>2. Спроектировать тесты AT-xx</h3><p class="card-text">Архитектор в спеке или tester: уровень, AC, кейс и его шаги</p></div>
+<div class="card"><h3>3. Матрица по факту</h3><p class="card-text">tester фиксирует реальное покрытие; понижения — с причиной в changes.md</p></div>
+</div>
+<div class="grow" style="display:flex;flex-direction:column;gap:24px">
+<p class="code"><span class="c-attr">[Fact(DisplayName = "Пустой ИНН → 400")]</span><br><span class="c-attr">[Trait("TestRail", "C40214")]</span><br>public async Task Create_EmptyInn_Returns400()<br>{<br>&#160;&#160;<span class="c-com">// Arrange · Act · Assert</span><br>}</p>
+<p class="card-text" style="font-size:28px;color:#4A5568">Метка — разрешённое исключение из правила «без ссылок на тикеты в коде». Фильтр: <b>dotnet test --filter-trait "TestRail=C40214"</b></p>
+<p class="card-text" style="font-size:28px;color:#4A5568">Проверяют: spec-auditor — тесты обеспечивают обещанное покрытие; reviewer — ассерты соответствуют шагам кейса.</p>
+</div>
+</div>
+<aside>На стадии разработки три новых действия. Первое — если кейс уже существовал, сначала ищем старые тесты, которые его проверяют, и ставим метку на них, а не пишем дубль. Второе — тесты проектируются заранее списком: архитектор делает это в спецификации, а если архитектурного шага нет — tester. Третье — после написания тестов tester фиксирует в матрице, что реально покрыто. Если обещали «полностью», а вышло «частично», это видно, причина уходит в changes.md. Метка в коде — обычный атрибут Trait из xUnit. Мы явно разрешили его в стандартах, чтобы ревью не считало его трассировкой.</aside>
+</section>

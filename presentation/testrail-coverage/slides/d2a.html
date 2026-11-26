@@ -1,0 +1,15 @@
+<section id="d2a" class="alt">
+<div class="head">
+<p class="eyebrow">ПОДРОБНО · СТАДИЯ 2 · ПРОЕКТИРОВАНИЕ ТЕСТОВ</p>
+<h2>Список тестов AT-xx — до написания кода</h2>
+</div>
+<table class="steps">
+<tr><th></th><th>КТО</th><th>ЧТО ДЕЛАЕТ</th><th>АРТЕФАКТ</th></tr>
+<tr><td class="n">1</td><td class="w"><span class="tag t-human">человек</span><span class="name">разработчик</span></td><td>Запускает <code>/task-start &lt;KEY&gt;</code></td><td class="a">—</td></tr>
+<tr><td class="n">2</td><td class="w"><span class="tag t-agent">агент</span><span class="name">teamlead</span></td><td>Оркестрирует стадию; передаёт исполнителям план среза с «Покрытием кейсов» и <code>test-cases.md</code></td><td class="a">—</td></tr>
+<tr><td class="n">3</td><td class="w"><span class="tag t-agent">агент</span><span class="name">solution-architect</span><br><span class="small">если есть арх. шаг</span></td><td>Сначала ищет существующие тесты на шаги кейса (по метке, по поведению). Затем AT-xx: уровень, AC, C-id, номера шагов. Новые тесты — только на непокрытые шаги</td><td class="a">План верификации в <code>docs/specs/&lt;KEY&gt;/spec.md</code></td></tr>
+<tr><td class="n">3′</td><td class="w"><span class="tag t-agent">агент</span><span class="name">tester</span><br><span class="small">если арх. шага нет</span></td><td>То же самое, но записывает AT-xx сразу в матрицу с пометкой <code>origin: tester</code></td><td class="a">Матрица в <code>docs/tests/&lt;KEY&gt;/test-cases.md</code></td></tr>
+<tr><td class="n">4</td><td class="w"><span class="tag t-agent">агент</span><span class="name">spec-auditor</span></td><td>Проверяет, что AT-xx дают обещанное покрытие: для «полностью» — интеграционный тест через HTTP на каждый шаг. Нет — BLOCKER/MAJOR</td><td class="a">Отчёт аудита спеки</td></tr>
+</table>
+<aside>Стадия 2, первая половина — проектирование. Разработчик запускает task-start, teamlead раздаёт работу и передаёт исполнителям план с покрытием кейсов. Если в плане есть архитектурный шаг, тесты проектирует solution-architect в плане верификации спеки; если нет — tester пишет тот же список прямо в матрицу. В обоих случаях первым делом ищутся старые тесты, которые уже проверяют шаги кейса: на них просто ставится метка, дубль не пишется. Затем spec-auditor независимо проверяет, что спроектированные тесты дают то покрытие, которое обещали на втором гейте. Например, кейс «полностью» без интеграционного теста — это блокер.</aside>
+</section>

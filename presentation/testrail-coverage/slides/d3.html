@@ -1,0 +1,16 @@
+<section id="d3">
+<div class="head">
+<p class="eyebrow">ПОДРОБНО · СТАДИЯ 3 · ПРИЁМКА</p>
+<h2>Отчёт из CI → ручной остаток → результаты в TestRail</h2>
+</div>
+<table class="steps">
+<tr><th></th><th>КТО</th><th>ЧТО ДЕЛАЕТ</th><th>АРТЕФАКТ</th></tr>
+<tr><td class="n">1</td><td class="w"><span class="tag t-script">CI-джоба</span><span class="name">отчёт покрытия (SRE)</span></td><td>Соединяет матрицу, результаты тестов и названия кейсов из TestRail (только чтение); предупреждает о понижениях и расхождениях</td><td class="a"><code>coverage-report.html</code>, <code>coverage-report.json</code></td></tr>
+<tr><td class="n">2</td><td class="w"><span class="tag t-human">человек</span><span class="name">QA</span></td><td>Открывает HTML из MR — видит, что осталось руками. Передаёт JSON агенту qa</td><td class="a">—</td></tr>
+<tr><td class="n">3</td><td class="w"><span class="tag t-agent">агент</span><span class="name">qa · приёмка</span></td><td>Объём ручного прогона — по фактическому статусу кейса; красный CI — весь кейс вручную. Прогон на стенде, у каждого шага — источник: стенд или автотест</td><td class="a"><code>docs/reports/&lt;KEY&gt;/test-report.md</code></td></tr>
+<tr class="gate-row"><td class="n">4</td><td class="w"><span class="tag t-gate">HUMAN GATE</span><span class="name">QA</span></td><td>Подтверждает запись результатов и полей покрытия</td><td class="a">—</td></tr>
+<tr><td class="n">5</td><td class="w"><span class="tag t-script">скрипты</span><span class="name">testrail-api</span></td><td>Результат по кейсу с итогом каждого шага; <code>Dev coverage</code> и <code>Dev autotests</code> — по факту; чтение для сверки</td><td class="a">Результаты и поля в TestRail</td></tr>
+<tr><td class="n">6</td><td class="w"><span class="tag t-human">человек</span><span class="name">QA</span></td><td>После релиза переносит кейсы из Change Request в функциональную секцию</td><td class="a">Кейс в базе регресса</td></tr>
+</table>
+<aside>Стадия 3. Когда pipeline MR прошёл, CI-джоба, которую встроят SRE, собирает отчёт покрытия: берёт матрицу из репозитория, результаты тестов и названия кейсов из TestRail. В TestRail она ничего не пишет. QA открывает HTML по ссылке из MR и сразу видит ручной остаток, а JSON передаёт агенту qa — у агента нет доступа к GitLab. Агент считает объём ручной проверки по фактическому статусу; если хоть один тест кейса красный — облегчения нет. После прогона, с согласия QA, результаты пишутся в TestRail, а в два новых поля — фактическое покрытие и список тестов. Перенос кейсов из Change Request в основную базу после релиза делает QA, как и сейчас.</aside>
+</section>

@@ -1,0 +1,16 @@
+<section id="d2b" class="alt">
+<div class="head">
+<p class="eyebrow">ПОДРОБНО · СТАДИЯ 2 · ТЕСТЫ И ПРОВЕРКА</p>
+<h2>Метка в тесте, матрица по факту, ревью</h2>
+</div>
+<table class="steps">
+<tr><th></th><th>КТО</th><th>ЧТО ДЕЛАЕТ</th><th>АРТЕФАКТ</th></tr>
+<tr><td class="n">5</td><td class="w"><span class="tag t-agent">агент</span><span class="name">coder</span></td><td>Реализует срез; тесты, которые пишет сам, — с меткой кейса</td><td class="a">Код, тесты</td></tr>
+<tr><td class="n">6</td><td class="w"><span class="tag t-agent">агент</span><span class="name">tester</span></td><td>Пишет и дополняет тесты по AT-xx с <code>[Trait("TestRail","C&lt;id&gt;")]</code>, прогоняет. Заполняет матрицу по факту: статус, шаги, полные имена тестов, причина понижения. YAML проверяется парсером</td><td class="a">Тесты; матрица в <code>test-cases.md</code></td></tr>
+<tr><td class="n">7</td><td class="w"><span class="tag t-agent">агент</span><span class="name">reviewer</span></td><td>Каждый тест матрицы есть и помечен; ассерты проверяют шаги кейса; нет дублей; матрица = факт</td><td class="a">Approved / Changes Requested</td></tr>
+<tr><td class="n">8</td><td class="w"><span class="tag t-agent">агент</span><span class="name">tech-writer</span></td><td>Понижения покрытия (план → факт → причина) от teamlead переносит в changes.md</td><td class="a"><code>docs/reports/&lt;KEY&gt;/changes.md</code></td></tr>
+<tr><td class="n">9</td><td class="w"><span class="tag t-human">человек</span><span class="name">разработчик</span></td><td>Коммит и MR — git делает только человек</td><td class="a">MR</td></tr>
+<tr><td class="n">10</td><td class="w"><span class="tag t-script">CI</span><span class="name">unit / integration jobs</span></td><td>Прогон тестов в pipeline MR</td><td class="a">Результаты JUnit</td></tr>
+</table>
+<aside>Вторая половина стадии 2. coder реализует срез; tester пишет тесты по спроектированному списку и ставит на них метку кейса — обычный атрибут Trait. Ключевой шаг: после написания tester заполняет матрицу по факту — что реально покрыто, какими тестами и каких шагов. Если обещали «полностью», а получилось «частично», причина пишется в матрицу, а tech-writer выносит её в changes.md — QA увидит её на приёмке. reviewer проверяет честность: метка стоит только на тестах, которые реально проверяют шаги кейса, матрица совпадает с кодом. Дальше человек делает коммит и MR, pipeline прогоняет тесты.</aside>
+</section>

@@ -1,0 +1,24 @@
+<section id="stage1">
+<div class="head">
+<p class="eyebrow">СТАДИЯ 1 · АНАЛИТИКА И ПЛАНИРОВАНИЕ</p>
+<h2>Кейсы и намерение покрытия — до разработки</h2>
+</div>
+<div class="flow">
+<div class="step"><p class="who">analyst</p><p class="what">BRD эпика с критериями AC</p></div>
+<x-shape kind="arrow-right" class="arrow"></x-shape>
+<div class="step gate"><p class="who">Гейт 1</p><p class="what">Одобрение BRD</p></div>
+<x-shape kind="arrow-right" class="arrow"></x-shape>
+<div class="step new"><p class="who">qa · дизайн</p><p class="what">Черновики кейсов TC-xx; сначала поиск существующих в TestRail</p></div>
+<x-shape kind="arrow-right" class="arrow"></x-shape>
+<div class="step new"><p class="who">planner</p><p class="what">Срезы + «Покрытие кейсов» + оценка автотестов</p></div>
+</div>
+<div class="flow">
+<div class="step gate"><p class="who">Гейт 2</p><p class="what">Планы и покрытие: разработчик + QA</p></div>
+<x-shape kind="arrow-right" class="arrow"></x-shape>
+<div class="step"><p class="who">человек</p><p class="what">Заводит подзадачи в Jira — появляются ключи срезов</p></div>
+<x-shape kind="arrow-right" class="arrow"></x-shape>
+<div class="step new"><p class="who">qa · выгрузка</p><p class="what">Кейсы в TestRail (Change Request/KEY); TC-xx → C-id в артефактах</p></div>
+</div>
+<p class="small">Оранжевая рамка — новые шаги. Запись в TestRail — только после явного «да» пользователя.</p>
+<aside>Что меняется на стадии 1. После одобрения BRD аналитик в той же сессии вызывает агента qa в режиме дизайна. Он сначала ищет, нет ли уже подходящих кейсов в TestRail — в секции нужного endpoint’а и в Change Request других задач, — и только потом пишет черновики новых кейсов. Затем planner раскладывает кейсы по срезам и в каждом плане пишет раздел «Покрытие кейсов»: какие кейсы закроют автотесты и насколько. Это согласуется на втором гейте вместе с планами. В TestRail кейсы попадают, когда в Jira появились подзадачи: так у кейса сразу правильный ключ задачи.</aside>
+</section>

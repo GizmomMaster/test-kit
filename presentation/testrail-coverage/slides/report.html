@@ -1,0 +1,22 @@
+<section id="report">
+<div class="head">
+<p class="eyebrow">ОТЧЁТ ДЛЯ QA</p>
+<h2>HTML-отчёт в pipeline — по кейсам, а не по тестам</h2>
+</div>
+<div class="row">
+<div class="grow" style="display:flex;flex-direction:column;gap:16px;background:#FCFBF7;border:2px solid #D6D1C2;border-radius:16px;padding:32px">
+<p style="font-size:28px;font-weight:600">PRJ-4812 · pipeline #48213 · SHA abc123</p>
+<p style="font-size:26px;color:#4A5568">7 кейсов: 3 полностью · 2 частично · 2 нет · красных 0</p>
+<hr style="border-top:2px solid #D6D1C2">
+<p style="font-size:26px"><b>C40213</b> · ПОЛНОСТЬЮ · 2 теста зелёные<br><span style="color:#B4521C">→ QA: смоук шага 1</span></p>
+<p style="font-size:26px"><b>C40214</b> · ЧАСТИЧНО · шаг 1 из CI<br><span style="color:#B4521C">→ QA: вручную шаги 2, 3</span></p>
+<p style="font-size:26px"><b>C40220</b> · НЕТ · внешняя система<br><span style="color:#B4521C">→ QA: полный прогон</span></p>
+</div>
+<div class="grow tight" style="display:flex;flex-direction:column">
+<div class="card"><h3>Три источника</h3><p class="card-text">Матрица из репозитория, результаты тестов, названия кейсов из TestRail (только чтение)</p></div>
+<div class="card"><h3>Для людей и для агента</h3><p class="card-text">HTML — ссылка из MR для QA; JSON — агенту qa на приёмке</p></div>
+<div class="card"><h3>Предупреждает</h3><p class="card-text">Понижения покрытия, тест не найден, метка и матрица расходятся</p></div>
+</div>
+</div>
+<aside>Чтобы QA не разбирался в YAML-матрице, pipeline собирает человекочитаемый HTML-отчёт. Он сгруппирован по кейсам — так QA думает — и для каждого кейса сразу говорит, что сделать руками. Отчёт соединяет матрицу из репозитория, результаты тестов и названия кейсов из TestRail; в TestRail он ничего не пишет. Рядом лежит JSON — его QA передаёт агенту qa на приёмке, чтобы агенту не нужен был доступ к GitLab. Саму джобу в CI встраивают SRE по нашей постановке.</aside>
+</section>

@@ -1,0 +1,18 @@
+<section id="why" class="alt">
+<div class="head">
+<p class="eyebrow">ПОЧЕМУ ТАК СЕЙЧАС</p>
+<h2>Кейсы TestRail появляются последними — когда тесты уже написаны</h2>
+</div>
+<div class="flow">
+<div class="step"><p class="who">Стадия 1 · аналитика</p><p class="what">analyst → planner<br>BRD с AC, планы срезов</p></div>
+<x-shape kind="arrow-right" class="arrow"></x-shape>
+<div class="step"><p class="who">Стадия 2 · разработка</p><p class="what">coder → tester<br>тесты по матрице «AC → тест»</p></div>
+<x-shape kind="arrow-right" class="arrow"></x-shape>
+<div class="step new"><p class="who">Стадия 3 · приёмка</p><p class="what">qa: кейсы TestRail<br>номера кейсов появляются только здесь</p></div>
+</div>
+<div class="row">
+<div class="card"><h3>Тестам не на что сослаться</h3><p class="card-text">На стадии 2 номеров кейсов ещё нет — пометить тест нечем</p></div>
+<div class="card"><h3>QA видит только «зелёный CI»</h3><p class="card-text">Без привязки к кейсам непонятно, какие шаги проверены</p></div>
+</div>
+<aside>Корень проблемы — в порядке работ. Сейчас агент qa проектирует кейсы на стадии приёмки, то есть после того, как tester уже написал тесты. Поэтому тестам физически не на что сослаться. А на приёмке QA видит только статус CI — зелёный или красный — без понимания, какие кейсы это покрывает.</aside>
+</section>
